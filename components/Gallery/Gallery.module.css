@@ -1,0 +1,172 @@
+.section {
+  padding: 60px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.bentoGrid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  break-inside: avoid;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(5, 150, 105, 0.2);
+}
+
+/* Bento Sizes removed in favor of natural image sizes */
+
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+.card:hover .img {
+  transform: scale(1.1);
+}
+
+.cardOverlay {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.card:hover .cardOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardTitle {
+  font-family: 'Suwannaphum', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.glassIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .bentoGrid { column-count: 2; }
+}
+
+@media (max-width: 600px) {
+  .bentoGrid { 
+    column-count: 2; 
+    column-gap: 10px;
+  }
+  .card {
+    margin-bottom: 10px;
+    border-radius: var(--radius-md); /* slightly smaller radius for small cards */
+  }
+  .cardOverlay { 
+    opacity: 1; 
+    transform: translateY(0); 
+    padding: 8px; /* less padding on mobile */
+    bottom: 8px; left: 8px; right: 8px;
+  }
+  .cardTitle {
+    font-size: 0.8rem; /* smaller text */
+  }
+  .glassIcon {
+    width: 24px; height: 24px; font-size: 0.8rem;
+  }
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalImg {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.closeBtn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s ease;
+}
+
+.closeBtn:hover {
+  transform: scale(1.1);
+}

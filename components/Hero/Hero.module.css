@@ -1,0 +1,91 @@
+.hero {
+  padding: 140px 0 60px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.content {
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroLogos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.heroLogo {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08));
+}
+
+.heroLogo:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.title {
+  font-family: 'Suwannaphum', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #000;
+  line-height: 1.25;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  color: #000;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: #000;
+  margin-bottom: 50px;
+  max-width: 700px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btnGlass {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.btnGlass:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 640px) {
+  .heroLogo { width: 140px; height: 140px; }
+  .actions { flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 100%; }
+  .btnGlass { width: auto; }
+}
