@@ -1,9 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -13,6 +15,7 @@ export default function Navbar() {
 
   const handleNav = (e, href) => {
     e.preventDefault();
+    setIsOpen(false);
     if (href === '#') window.scrollTo({ top: 0, behavior: 'smooth' });
     else document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -27,7 +30,11 @@ export default function Navbar() {
           </div>
         </a>
 
-        <div className={styles.links}>
+        <button className={styles.menuBtn} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          {isOpen ? <FiX /> : <FiMenu />}
+        </button>
+
+        <div className={`${styles.links} ${isOpen ? styles.open : ''}`}>
           <a href="#video" className={styles.link} onClick={(e) => handleNav(e, '#video')}>វីដេអូ</a>
           <a href="#gallery" className={styles.link} onClick={(e) => handleNav(e, '#gallery')}>រូបភាព</a>
           <a href="#about" className={styles.link} onClick={(e) => handleNav(e, '#about')}>អំពីពួកយើង</a>

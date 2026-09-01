@@ -12,11 +12,11 @@ export default function Hero() {
             <img src="/logo/Untitled-1.png" alt="មហាវិទ្យាល័យកសិកម្ម" className={styles.heroLogo} />
           </div>
           <h1 className={styles.title}>
-            អបអរសាទរ ការបញ្ចប់ការសិក្សា<br/>
+            អបអរសាទរ ជោគជ័យនៃការបញ្ចប់ការសិក្សា<br/>
             <span className={styles.highlight}>មហាវិទ្យាល័យកសិកម្ម</span>
           </h1>
           <p className={styles.subtitle}>
-            បណ្ណសារឌីជីថលដែលប្រមូលផ្ដុំនូវការចងចាំ អនុស្សាវរីយ៍ និងភាពជោគជ័យរបស់និស្សិតជាន់ទី២៦ នៃសាកលវិទ្យាល័យភូមិន្ទកសិកម្ម។
+            ទំព័រឌីជីថលចងក្រងស្នាមញញឹម អនុស្សាវរីយ៍ និងមោទនភាពរបស់និស្សិតជំនាន់ទី២៦ នៃសាកលវិទ្យាល័យភូមិន្ទកសិកម្ម។
           </p>
           <div className={styles.actions}>
             <button className="btn-primary" onClick={scrollToVideo}>

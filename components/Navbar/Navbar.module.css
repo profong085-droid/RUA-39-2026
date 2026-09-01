@@ -25,7 +25,7 @@
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0;
   text-decoration: none;
 }
 
@@ -49,18 +49,14 @@
   transform: scale(1.1);
 }
 
-.logoContainer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
+
 
 .navLogo {
   height: 48px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+  margin-right: -4px;
 }
 
 .logoText {
@@ -70,7 +66,7 @@
   color: #000000;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   letter-spacing: 0.5px;
 }
 
@@ -80,7 +76,7 @@
   font-weight: 500;
   color: inherit;
   border-left: 1px solid currentColor;
-  padding-left: 8px;
+  padding-left: 6px;
   letter-spacing: 1px;
 }
 
@@ -128,6 +124,62 @@
   width: 100%;
 }
 
+.menuBtn {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav.scrolled .menuBtn {
+  color: white;
+}
+
 @media (max-width: 640px) {
-  .links { display: none; }
+  .menuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-primary);
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav.scrolled .links {
+    background-color: var(--bg-dark);
+  }
+
+  .links.open {
+    max-height: 300px;
+  }
+
+  .link {
+    font-size: 1.1rem;
+    padding: 16px 24px;
+    display: block;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .nav.scrolled .link {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .link::after {
+    display: none;
+  }
 }

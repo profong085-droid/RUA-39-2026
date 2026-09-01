@@ -35,12 +35,12 @@
 
 .title {
   font-family: 'Suwannaphum', serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(1.2rem, 5vw, 3.5rem);
   font-weight: 700;
   color: #000;
-  line-height: 1.25;
-  margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
 }
 
 .highlight {
@@ -50,11 +50,11 @@
 }
 
 .subtitle {
-  font-size: 1.15rem;
+  font-size: clamp(0.85rem, 3vw, 1.15rem);
   color: #000;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   max-width: 700px;
-  line-height: 1.8;
+  line-height: 1.6;
   font-weight: 400;
 }
 

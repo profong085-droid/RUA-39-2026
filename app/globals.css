@@ -61,7 +61,7 @@ body {
 
 .section-title {
   font-family: 'Suwannaphum', serif;
-  font-size: clamp(2.5rem, 5vw, 3rem);
+  font-size: clamp(1.4rem, 5vw, 3rem);
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 12px;
