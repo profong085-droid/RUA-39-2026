@@ -63,8 +63,8 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-lg);
-  padding: 40px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
 }
@@ -74,44 +74,76 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 6px;
+  width: 4px;
   height: 100%;
   background: linear-gradient(to bottom, var(--accent-green), var(--accent-gold));
 }
 
 .cardTitle {
   font-family: 'Suwannaphum', serif;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 24px;
-  padding-bottom: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.detailRow {
+.detailGrid {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 24px;
+  gap: 12px;
 }
 
-.detailRow:last-child {
-  margin-bottom: 0;
+.detailCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: var(--transition);
+}
+
+.detailCard:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.detailIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(217,119,6,0.1), rgba(34,197,94,0.1));
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.detailContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .detailLabel {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .detailValue {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
 @media (max-width: 600px) {
@@ -129,17 +161,25 @@
   .metricDivider { width: 1px; height: 30px; margin: 0; }
   .metricVal { font-size: 1.8rem; }
   .infoCard { 
-    padding: 30px 20px; 
+    padding: 24px 16px; 
     text-align: center; 
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.6); /* Slightly more opaque for better contrast */
+    background: rgba(255, 255, 255, 0.6); 
   }
   .infoCard::before {
     width: 100%;
-    height: 6px; /* Move the accent gradient to the top */
+    height: 4px;
   }
-  .cardTitle { font-size: 1.3rem; margin-bottom: 20px; padding-bottom: 12px; }
-  .detailRow { margin-bottom: 20px; align-items: center; }
-  .detailLabel { font-size: 0.8rem; }
-  .detailValue { font-size: 1rem; }
+  .cardTitle { font-size: 1.15rem; margin-bottom: 16px; padding-bottom: 10px; }
+  
+  .detailCard {
+    flex-direction: column;
+    text-align: center;
+    padding: 12px;
+    gap: 8px;
+  }
+  
+  .detailCard:hover {
+    transform: translateY(-3px);
+  }
 }

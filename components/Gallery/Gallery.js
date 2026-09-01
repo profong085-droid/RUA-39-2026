@@ -26,7 +26,6 @@ export default function Gallery() {
         
         <div className={styles.header}>
           <h2 className="section-title">{t.galleryTitle}</h2>
-          <p className="section-subtitle">{t.galleryDesc}</p>
         </div>
 
         <div className={styles.bentoGrid}>

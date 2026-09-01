@@ -20,12 +20,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
-.logoContainer {
+.logoImg {
   display: flex;
   align-items: center;
-  gap: 0;
   text-decoration: none;
 }
 
@@ -59,7 +59,10 @@
   margin-right: -4px;
 }
 
-.logoText {
+.logoTextCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Suwannaphum', serif;
   font-size: 1.4rem;
   font-weight: 700;
@@ -68,6 +71,7 @@
   align-items: center;
   gap: 4px;
   letter-spacing: 0.5px;
+  text-decoration: none;
 }
 
 .tag {
@@ -80,8 +84,14 @@
   letter-spacing: 1px;
 }
 
-.nav.scrolled .logoText {
+.nav.scrolled .logoTextCenter {
   color: var(--bg-secondary);
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 .links {
@@ -134,6 +144,12 @@
   padding: 8px;
 }
 
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .nav.scrolled .menuBtn {
   color: white;
 }
@@ -155,7 +171,6 @@
   color: #222;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-left: 15px;
 }
 
 .langBtn:hover {
@@ -211,13 +226,17 @@
     display: none;
   }
 
+  .navActions {
+    gap: 12px;
+  }
+
   .langBtn {
     margin: 20px auto 24px;
     width: calc(100% - 48px);
     justify-content: center;
     padding: 12px;
     font-size: 1rem;
-    background: rgba(217, 119, 6, 0.1); /* light gold tint */
+    background: rgba(217, 119, 6, 0.1);
     border: 1px solid var(--accent-gold);
     color: var(--accent-gold);
     box-shadow: none;

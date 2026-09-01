@@ -13,7 +13,6 @@ export default function VideoPlayer() {
         <div className={styles.header}>
           <div>
             <h2 className="section-title">{t.videoTitle}</h2>
-            <p className="section-subtitle">{t.videoDesc}</p>
           </div>
         </div>
 

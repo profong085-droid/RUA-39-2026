@@ -110,7 +110,7 @@
 
 @media (max-width: 640px) {
   .hero { padding: 90px 0 30px; }
-  .bannerSlider { height: 250px; margin-bottom: 15px; }
+  .bannerSlider { height: auto; aspect-ratio: 16 / 9; margin-bottom: 15px; }
   .actions { flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 100%; }
   .btnGlass { width: auto; }
 }
