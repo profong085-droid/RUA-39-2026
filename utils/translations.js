@@ -39,7 +39,7 @@ export const translations = {
     footerCopyright: "© 2026 រក្សាសិទ្ធិគ្រប់យ៉ាង។",
     footerFB: "ហ្វេសប៊ុក",
     footerTG: "តេឡេក្រាម",
-    footerYT: "យូធូប"
+    footerWeb: "វែបសាយ"
   },
   en: {
     // Navbar
@@ -81,6 +81,6 @@ export const translations = {
     footerCopyright: "© 2026 All Rights Reserved.",
     footerFB: "Facebook",
     footerTG: "Telegram",
-    footerYT: "YouTube"
+    footerWeb: "Website"
   }
 };

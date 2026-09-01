@@ -12,9 +12,9 @@ export default function Footer() {
           <p className={styles.copyright}>{t.footerCopyright}</p>
         </div>
         <div className={styles.right}>
-          <a href="#" className={styles.link}>{t.footerFB}</a>
-          <a href="#" className={styles.link}>{t.footerTG}</a>
-          <a href="#" className={styles.link}>{t.footerYT}</a>
+          <a href="https://web.facebook.com/Phochaifong007/" target="_blank" rel="noopener noreferrer" className={styles.link}>{t.footerFB}</a>
+          <a href="https://t.me/Phochaifong" target="_blank" rel="noopener noreferrer" className={styles.link}>{t.footerTG}</a>
+          <a href="https://chaifong.website/" target="_blank" rel="noopener noreferrer" className={styles.link}>{t.footerWeb}</a>
         </div>
       </div>
     </footer>
