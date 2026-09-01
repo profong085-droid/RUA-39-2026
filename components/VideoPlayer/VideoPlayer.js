@@ -1,7 +1,9 @@
 'use client';
 import styles from './VideoPlayer.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function VideoPlayer() {
+  const { t } = useLanguage();
   const youtubeId = 'Q_WtKnSZ8qk';
 
   return (
@@ -10,8 +12,8 @@ export default function VideoPlayer() {
         
         <div className={styles.header}>
           <div>
-            <h2 className="section-title">វីដេអូអនុស្សាវរីយ៍</h2>
-            <p className="section-subtitle">រំលឹកឡើងវិញនូវពេលវេលាដ៏មានន័យដែលធ្វើឱ្យរយៈពេល ៤ ឆ្នាំនេះមិនអាចបំភ្លេចបាន។</p>
+            <h2 className="section-title">{t.videoTitle}</h2>
+            <p className="section-subtitle">{t.videoDesc}</p>
           </div>
         </div>
 

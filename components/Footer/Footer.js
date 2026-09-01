@@ -1,18 +1,20 @@
 'use client';
 import styles from './Footer.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.left}>
-          <div className={styles.brand}>ស.ភ.ក ២០២៦</div>
-          <p className={styles.copyright}>© 2026 រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+          <div className={styles.brand}>{t.footerBrand}</div>
+          <p className={styles.copyright}>{t.footerCopyright}</p>
         </div>
         <div className={styles.right}>
-          <a href="#" className={styles.link}>ហ្វេសប៊ុក</a>
-          <a href="#" className={styles.link}>តេឡេក្រាម</a>
-          <a href="#" className={styles.link}>យូធូប</a>
+          <a href="#" className={styles.link}>{t.footerFB}</a>
+          <a href="#" className={styles.link}>{t.footerTG}</a>
+          <a href="#" className={styles.link}>{t.footerYT}</a>
         </div>
       </div>
     </footer>

@@ -1,4 +1,5 @@
 import './globals.css';
+import { Providers } from './Providers';
 
 export const metadata = {
   title: 'RUA - ការបញ្ចប់ការសិក្សា ៤ ឆ្នាំ | Graduation 2026',
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

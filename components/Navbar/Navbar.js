@@ -2,8 +2,10 @@
 import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
+  const { lang, toggleLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,9 +37,13 @@ export default function Navbar() {
         </button>
 
         <div className={`${styles.links} ${isOpen ? styles.open : ''}`}>
-          <a href="#video" className={styles.link} onClick={(e) => handleNav(e, '#video')}>វីដេអូ</a>
-          <a href="#gallery" className={styles.link} onClick={(e) => handleNav(e, '#gallery')}>រូបភាព</a>
-          <a href="#about" className={styles.link} onClick={(e) => handleNav(e, '#about')}>អំពីពួកយើង</a>
+          <a href="#video" className={styles.link} onClick={(e) => handleNav(e, '#video')}>{t.navVideo}</a>
+          <a href="#gallery" className={styles.link} onClick={(e) => handleNav(e, '#gallery')}>{t.navGallery}</a>
+          <a href="#about" className={styles.link} onClick={(e) => handleNav(e, '#about')}>{t.navAbout}</a>
+          
+          <button className={styles.langBtn} onClick={toggleLanguage}>
+            {lang === 'km' ? '🇬🇧 EN' : '🇰🇭 KM'}
+          </button>
         </div>
       </div>
     </nav>

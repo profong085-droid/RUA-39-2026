@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './Gallery.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 const photos = [
   { id: 1, title: 'ថ្ងៃបញ្ចប់ការសិក្សា', url: '/photo/IMG_9298 (3).JPG', size: 'large' },
@@ -17,13 +18,15 @@ const photos = [
 export default function Gallery() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
+  const { t } = useLanguage();
+
   return (
     <section id="gallery" className={styles.section}>
       <div className="container">
         
         <div className={styles.header}>
-          <h2 className="section-title">រូបភាព</h2>
-          <p className="section-subtitle">កម្រងរូបភាពអនុស្សាវរីយ៍ក្នុងថ្ងៃបញ្ចប់ការសិក្សា។</p>
+          <h2 className="section-title">{t.galleryTitle}</h2>
+          <p className="section-subtitle">{t.galleryDesc}</p>
         </div>
 
         <div className={styles.bentoGrid}>
@@ -42,7 +45,7 @@ export default function Gallery() {
             <button className={styles.closeBtn} onClick={() => setSelectedPhoto(null)}>✕</button>
             <img src={selectedPhoto.url} alt={selectedPhoto.title} className={styles.modalImg} />
             <a href={selectedPhoto.url} download className="btn-primary" style={{ marginTop: '20px' }}>
-              ទាញយករូបភាព (Download)
+              {t.btnDownload}
             </a>
           </div>
         </div>
