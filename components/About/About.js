@@ -21,23 +21,6 @@ export default function About() {
             <p className={styles.body}>
               {t.aboutP3}
             </p>
-            
-            <div className={styles.metrics}>
-              <div className={styles.metric}>
-                <span className={styles.metricVal}>៤</span>
-                <span className={styles.metricLabel}>{t.metricYears}</span>
-              </div>
-              <div className={styles.metricDivider} />
-              <div className={styles.metric}>
-                <span className={styles.metricVal}>∞</span>
-                <span className={styles.metricLabel}>{t.metricMemories}</span>
-              </div>
-              <div className={styles.metricDivider} />
-              <div className={styles.metric}>
-                <span className={styles.metricVal}>១៤៦០</span>
-                <span className={styles.metricLabel}>{t.metricDays}</span>
-              </div>
-            </div>
           </div>
 
           <div className={styles.infoCard}>

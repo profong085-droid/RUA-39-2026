@@ -86,31 +86,71 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  margin-top: 15px;
 }
 
-.btnGlass {
-  padding: 16px 36px;
-  font-size: 1.05rem;
+.btnPrimary, .btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 45px;
+  font-size: 1.1rem;
   font-weight: 700;
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #000;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: var(--transition);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: 'Kantumruy Pro', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.5px;
 }
 
-.btnGlass:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+.btnPrimary {
+  background: linear-gradient(135deg, var(--accent-green), #045c42);
+  color: white;
+  border: none;
+  box-shadow: 0 10px 25px rgba(4, 120, 87, 0.3);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(4, 120, 87, 0.4);
+  background: linear-gradient(135deg, #059669, #02432e);
+}
+
+.btnSecondary {
+  background: #fff;
+  color: #000;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.btnSecondary:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: #000;
+}
+
+.btnIcon {
+  font-size: 1.4rem;
 }
 
 @media (max-width: 640px) {
   .hero { padding: 90px 0 30px; }
   .bannerSlider { height: auto; aspect-ratio: 16 / 9; margin-bottom: 15px; }
-  .actions { flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 100%; }
-  .btnGlass { width: auto; }
+  .actions { 
+    flex-direction: row; 
+    width: 100%; 
+    gap: 10px; 
+    padding: 0; 
+    justify-content: center;
+  }
+  .btnPrimary, .btnSecondary { 
+    width: auto; 
+    padding: 10px 16px; 
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+  .btnIcon {
+    font-size: 1.1rem;
+  }
 }

@@ -1,6 +1,7 @@
 'use client';
 import styles from './Hero.module.css';
 import { useLanguage } from '@/context/LanguageContext';
+import { FiPlayCircle, FiImage } from 'react-icons/fi';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -22,13 +23,15 @@ export default function Hero() {
             {t.heroDesc}
           </p>
           <div className={styles.actions}>
-            <button className="btn-primary" onClick={scrollToVideo}>
+            <button className={styles.btnPrimary} onClick={scrollToVideo}>
+              <FiPlayCircle className={styles.btnIcon} />
               {t.btnWatchVideo}
             </button>
             <button 
-              className={styles.btnGlass}
+              className={styles.btnSecondary}
               onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
             >
+              <FiImage className={styles.btnIcon} />
               {t.btnPhotoGallery}
             </button>
           </div>

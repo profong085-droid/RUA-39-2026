@@ -3,12 +3,12 @@ import { Providers } from './Providers';
 
 export const metadata = {
   metadataBase: new URL('https://rua-39.website'),
-  title: 'RUA - ការបញ្ចប់ការសិក្សា ៤ ឆ្នាំ | Graduation 2026',
-  description: 'វេបសាយ RUA សម្រាប់ប្រមូលផ្តុំការ ចងចាំ ៤ ឆ្នាំ នៃការបញ្ចប់ការសិក្សា | A celebration of 4 years of academic journey at RUA.',
-  keywords: 'RUA, Graduation, 2026, Royal University of Agriculture, ការបញ្ចប់ការសិក្សា',
+  title: 'សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ជំនាន់៣៩ - RUA 2026',
+  description: 'សៀវភៅអនុស្សាវរីយ៍៖ ចងក្រងស្នាមញញឹម រឿងរ៉ាវអតីតកាល និងមោទនភាពនៃនិស្សិតកសិកម្ម ជំនាន់ទី ៣៩ សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ឆ្នាំ 2026។ Royal University of Agriculture Class of 2026.',
+  keywords: 'rua, សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម, ជំនាន់៣៩, 2026, កសិកម្ម, Agriculture, Royal University of Agriculture, កសិកកម្ម',
   openGraph: {
-    title: 'RUA Graduation 2026',
-    description: 'Celebrating 4 years of academic excellence',
+    title: 'សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ជំនាន់៣៩ - RUA 2026',
+    description: 'Celebrating 4 years of academic excellence at the Royal University of Agriculture (RUA)',
     type: 'website',
   },
   verification: {
