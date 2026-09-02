@@ -7,7 +7,7 @@ export const translations = {
     
     // Hero
     generation: "ជំនាន់៣៩",
-    heroDesc: "ទំព័រឌីជីថលចងក្រងស្នាមញញឹម អនុស្សាវរីយ៍ និងមោទនភាពរបស់និស្សិតជំនាន់ទី៣៩ នៃសាកលវិទ្យាល័យភូមិន្ទកសិកម្ម។",
+    heroDesc: "សៀវភៅអនុស្សាវរីយ៍៖ ចងក្រងស្នាមញញឹម រឿងរ៉ាវអតីតកាល និងមោទនភាពនៃនិស្សិតជំនាន់ទី ៣៩ សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម",
     btnWatchVideo: "ទស្សនាវីដេអូ",
     btnPhotoGallery: "កម្រងរូបភាព",
 
@@ -23,8 +23,9 @@ export const translations = {
 
     // About
     aboutTitle: "ដំណើររឿងរបស់យើង",
-    aboutP1: "រយៈពេល ៤ ឆ្នាំនេះគឺជាដំណើរដ៏អស្ចារ្យនៃការសិក្សារៀនសូត្រ ការលូតលាស់ និងមិត្តភាព។ ចាប់តាំងពីថ្ងៃដំបូងដែលយើងបោះជំហានចូលសាលា រហូតដល់ថ្ងៃអបអរសាទរនេះ គ្រប់ពេលវេលាទាំងអស់បានផាត់ពណ៌ជីវិតយើងឱ្យក្លាយជាយើងនៅថ្ងៃនេះ។",
-    aboutP2: "នៅពេលដែលយើងឈានជើងចូលទៅកាន់អនាគត យើងនឹងនាំយកទៅជាមួយនូវចំណេះដឹង បទពិសោធន៍ និងចំណងមិត្តភាពដែលមិនអាចបំបែកបានពីសាកលវិទ្យាល័យភូមិន្ទកសិកម្ម។",
+    aboutP1: "៤ ឆ្នាំនៅសាកលវិទ្យាល័យភូមិន្ទកសិកម្ម គឺជាទំព័រជីវិតដ៏ស្រស់ស្អាត និងមានតម្លៃបំផុត ដែលពោរពេញទៅដោយការរៀនសូត្រ ការតស៊ូជម្នះគ្រប់ឧបសគ្គ និងចំណងមិត្តភាពដ៏ស្មោះស្ម័គ្រ។ 🌱💚",
+    aboutP2: "គ្រប់ពេលវេលាដែលបានឆ្លងកាត់ជាមួយគ្នា មិនថាក្នុងបន្ទប់សិក្សា ការចុះកម្មសិក្សាផ្ទាល់ ការធ្វើកិច្ចការជាក្រុមរហូតយប់ជ្រៅ ឬសំណើចក្អាកក្អាយជាមួយមិត្តភក្តិនោះទេ សុទ្ធតែបានបន្សល់ទុកនូវស្លាកស្នាមអនុស្សាវរីយ៍ដែលមិនអាចកាត់ថ្លៃបាន ហើយបានកែច្នៃយើងឱ្យក្លាយជាមនុស្សពេញវ័យដ៏រឹងមាំ និងមានទំនុកចិត្តនៅថ្ងៃនេះ។ 🎓✨",
+    aboutP3: "អរគុណសាកលវិទ្យាល័យភូមិន្ទកសិកម្ម អរគុណលោកគ្រូអ្នកគ្រូ និងអរគុណមិត្តភក្តិទាំងអស់សម្រាប់អនុស្សាវរីយ៍ដ៏អស្ចារ្យមួយនេះ! 🌻🫶",
     metricYears: "ឆ្នាំ",
     metricDays: "ថ្ងៃ",
     metricMemories: "អនុស្សាវរីយ៍",
@@ -50,7 +51,7 @@ export const translations = {
     
     // Hero
     generation: "Generation 39",
-    heroDesc: "A digital archive compiling the smiles, memories, and pride of the 39th generation students of the Royal University of Agriculture.",
+    heroDesc: "Memory Book: Compiling the smiles, past stories, and pride of the 39th generation students of the Royal University of Agriculture",
     btnWatchVideo: "Watch Video",
     btnPhotoGallery: "Photo Gallery",
 
@@ -66,8 +67,9 @@ export const translations = {
 
     // About
     aboutTitle: "Our Story",
-    aboutP1: "These 4 years have been an amazing journey of learning, growth, and friendship. From the first day we stepped into school until this celebration, every moment has shaped us into who we are today.",
-    aboutP2: "As we step into the future, we carry with us the knowledge, experience, and unbreakable bonds from the Royal University of Agriculture.",
+    aboutP1: "The 4 years at the Royal University of Agriculture have been the most beautiful and valuable chapter of our lives, filled with learning, overcoming obstacles, and sincere friendships. 🌱💚",
+    aboutP2: "Every moment we spent together, whether in the classroom, during field internships, doing group work until late at night, or laughing out loud with friends, has left behind invaluable memories and shaped us into the strong, confident adults we are today. 🎓✨",
+    aboutP3: "Thank you to the Royal University of Agriculture, thank you to all our teachers, and thank you to all our friends for these amazing memories! 🌻🫶",
     metricYears: "Years",
     metricDays: "Days",
     metricMemories: "Memories",

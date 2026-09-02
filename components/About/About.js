@@ -18,6 +18,9 @@ export default function About() {
             <p className={styles.body}>
               {t.aboutP2}
             </p>
+            <p className={styles.body}>
+              {t.aboutP3}
+            </p>
             
             <div className={styles.metrics}>
               <div className={styles.metric}>
