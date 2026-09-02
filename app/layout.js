@@ -14,6 +14,11 @@ export const metadata = {
   verification: {
     google: 'o1ZQ3lo6lA2J-GcaL-QK4BNEMNGVQbTB4jVPo1SgU2c',
   },
+  icons: {
+    icon: '/logo/rua2.png',
+    shortcut: '/logo/rua2.png',
+    apple: '/logo/rua2.png',
+  },
 };
 
 export default function RootLayout({ children }) {
