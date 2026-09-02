@@ -14,6 +14,7 @@ export const translations = {
     // Video Player
     videoTitle: "វីដេអូអនុស្សាវរីយ៍",
     videoDesc: "រំលឹកឡើងវិញនូវពេលវេលាដ៏មានន័យដែលធ្វើឱ្យរយៈពេល ៤ ឆ្នាំនេះមិនអាចបំភ្លេចបាន។",
+    btnDownloadVideo: "ទាញយកវីដេអូ",
 
     // Gallery
     galleryTitle: "រូបភាព",
@@ -25,7 +26,7 @@ export const translations = {
     aboutP1: "រយៈពេល ៤ ឆ្នាំនេះគឺជាដំណើរដ៏អស្ចារ្យនៃការសិក្សារៀនសូត្រ ការលូតលាស់ និងមិត្តភាព។ ចាប់តាំងពីថ្ងៃដំបូងដែលយើងបោះជំហានចូលសាលា រហូតដល់ថ្ងៃអបអរសាទរនេះ គ្រប់ពេលវេលាទាំងអស់បានផាត់ពណ៌ជីវិតយើងឱ្យក្លាយជាយើងនៅថ្ងៃនេះ។",
     aboutP2: "នៅពេលដែលយើងឈានជើងចូលទៅកាន់អនាគត យើងនឹងនាំយកទៅជាមួយនូវចំណេះដឹង បទពិសោធន៍ និងចំណងមិត្តភាពដែលមិនអាចបំបែកបានពីសាកលវិទ្យាល័យភូមិន្ទកសិកម្ម។",
     metricYears: "ឆ្នាំ",
-    metricSemesters: "ឆមាស",
+    metricDays: "ថ្ងៃ",
     metricMemories: "អនុស្សាវរីយ៍",
     infoTitle: "ព័ត៌មានលម្អិត",
     infoGen: "ជំនាន់",
@@ -56,6 +57,7 @@ export const translations = {
     // Video Player
     videoTitle: "Memorable Video",
     videoDesc: "Relive the meaningful moments that made these 4 years unforgettable.",
+    btnDownloadVideo: "Download Video",
 
     // Gallery
     galleryTitle: "Photos",
@@ -67,7 +69,7 @@ export const translations = {
     aboutP1: "These 4 years have been an amazing journey of learning, growth, and friendship. From the first day we stepped into school until this celebration, every moment has shaped us into who we are today.",
     aboutP2: "As we step into the future, we carry with us the knowledge, experience, and unbreakable bonds from the Royal University of Agriculture.",
     metricYears: "Years",
-    metricSemesters: "Semesters",
+    metricDays: "Days",
     metricMemories: "Memories",
     infoTitle: "Details",
     infoGen: "Generation",

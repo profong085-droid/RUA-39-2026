@@ -4,7 +4,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 export default function VideoPlayer() {
   const { t } = useLanguage();
-  const youtubeId = 'Q_WtKnSZ8qk';
+  const youtubeId = '1FzL7gfsEJ0';
 
   return (
     <section id="video" className={styles.section}>
@@ -20,7 +20,7 @@ export default function VideoPlayer() {
           <div className={styles.videoWrapper}>
             <iframe
               className={styles.iframe}
-              src={`https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1&controls=0&disablekb=1`}
+              src={`https://www.youtube.com/embed/${youtubeId}?rel=0&vq=hd2160`}
               allow="autoplay; fullscreen"
               sandbox="allow-scripts allow-same-origin allow-presentation"
             />

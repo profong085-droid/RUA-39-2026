@@ -26,13 +26,13 @@ export default function About() {
               </div>
               <div className={styles.metricDivider} />
               <div className={styles.metric}>
-                <span className={styles.metricVal}>៨</span>
-                <span className={styles.metricLabel}>{t.metricSemesters}</span>
+                <span className={styles.metricVal}>∞</span>
+                <span className={styles.metricLabel}>{t.metricMemories}</span>
               </div>
               <div className={styles.metricDivider} />
               <div className={styles.metric}>
-                <span className={styles.metricVal}>∞</span>
-                <span className={styles.metricLabel}>{t.metricMemories}</span>
+                <span className={styles.metricVal}>១៤៦០</span>
+                <span className={styles.metricLabel}>{t.metricDays}</span>
               </div>
             </div>
           </div>
