@@ -13,7 +13,7 @@ export const metadata = {
     siteName: 'RUA Graduation 2026',
     images: [
       {
-        url: '/photo/IMG_9298 (3).JPG',
+        url: '/photo/IMG_9298%20(3).JPG',
         width: 1200,
         height: 630,
         alt: 'RUA 39 Graduation',
@@ -25,7 +25,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ជំនាន់៣៩ - RUA 2026',
     description: 'Celebrating 4 years of academic excellence at the Royal University of Agriculture (RUA)',
-    images: ['/photo/IMG_9298 (3).JPG'],
+    images: ['/photo/IMG_9298%20(3).JPG'],
   },
   verification: {
     google: 'o1ZQ3lo6lA2J-GcaL-QK4BNEMNGVQbTB4jVPo1SgU2c',
