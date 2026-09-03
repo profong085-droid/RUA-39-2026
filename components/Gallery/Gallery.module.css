@@ -1,5 +1,5 @@
 .section {
-  padding: 100px 0;
+  padding: 60px 0;
   position: relative;
   background-color: var(--bg-primary);
 }
@@ -98,6 +98,7 @@
 }
 
 @media (max-width: 600px) {
+  .section { padding: 40px 0; }
   .bentoGrid { 
     column-count: 2; 
     column-gap: 10px;

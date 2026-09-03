@@ -1,5 +1,5 @@
 .section {
-  padding: 100px 0;
+  padding: 60px 0;
   background-color: var(--bg-primary);
 }
 
@@ -60,6 +60,7 @@
 }
 
 @media (max-width: 640px) {
+  .section { padding: 40px 0; }
   .videoCard { padding: 0; border-radius: 16px; }
   .videoWrapper { border-radius: 16px; }
 }
