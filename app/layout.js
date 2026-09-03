@@ -5,7 +5,7 @@ export const metadata = {
   metadataBase: new URL('https://rua-39.website'),
   title: 'សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ជំនាន់៣៩ - RUA 2026',
   description: 'សៀវភៅអនុស្សាវរីយ៍៖ ចងក្រងស្នាមញញឹម រឿងរ៉ាវអតីតកាល និងមោទនភាពនៃនិស្សិតកសិកម្ម ជំនាន់ទី ៣៩ សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ឆ្នាំ 2026។ Royal University of Agriculture Class of 2026.',
-  keywords: 'rua, សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម, ជំនាន់៣៩, 2026, កសិកម្ម, Agriculture, Royal University of Agriculture, កសិកកម្ម',
+  keywords: 'rua, សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម, ជំនាន់៣៩, 2026, កសិកម្ម, Agriculture, Royal University of Agriculture, កសិកម្មជំនាន់៣៩, បញ្ចប់ការសិក្សា, graduation, rua alumni, អតីតនិស្សិតកសិកម្ម, និស្សិតកសិកម្ម, សាកលវិទ្យាល័យ',
   openGraph: {
     title: 'សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ជំនាន់៣៩ - RUA 2026',
     description: 'Celebrating 4 years of academic excellence at the Royal University of Agriculture (RUA)',
@@ -37,6 +37,16 @@ export const metadata = {
   },
 };
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Royal University of Agriculture Class of 2026',
+  alternateName: 'សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ជំនាន់ទី៣៩',
+  url: 'https://rua-39.website',
+  logo: 'https://rua-39.website/logo/rua2.png',
+  description: 'សៀវភៅអនុស្សាវរីយ៍៖ ចងក្រងស្នាមញញឹម រឿងរ៉ាវអតីតកាល និងមោទនភាពនៃនិស្សិតកសិកម្ម ជំនាន់ទី ៣៩ សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ឆ្នាំ 2026។'
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="km">
@@ -44,6 +54,10 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       </head>
       <body>
         <Providers>
