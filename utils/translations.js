@@ -51,7 +51,9 @@ export const translations = {
     galSmile: "ស្នាមញញឹម",
     galHope: "ក្ដីសង្ឃឹម",
     galFriends: "មិត្តភក្តិ",
-    galGoodTime: "វេលាល្អ"
+    galGoodTime: "វេលាល្អ",
+    navLogin: "ចូលគណនី",
+    navLogout: "ចាកចេញ"
   },
   en: {
     navVideo: "Video",
@@ -105,7 +107,9 @@ export const translations = {
     galSmile: "Smile",
     galHope: "Hope",
     galFriends: "Friends",
-    galGoodTime: "Good Time"
+    galGoodTime: "Good Time",
+    navLogin: "Login",
+    navLogout: "Logout"
   },
   vn: {
     navVideo: "Video",
@@ -159,7 +163,9 @@ export const translations = {
     galSmile: "Nụ cười",
     galHope: "Hy vọng",
     galFriends: "Bạn bè",
-    galGoodTime: "Thời gian Đẹp"
+    galGoodTime: "Thời gian Đẹp",
+    navLogin: "Đăng nhập",
+    navLogout: "Đăng xuất"
   },
   cn: {
     navVideo: "视频",
@@ -213,7 +219,9 @@ export const translations = {
     galSmile: "微笑",
     galHope: "希望",
     galFriends: "朋友",
-    galGoodTime: "美好时光"
+    galGoodTime: "美好时光",
+    navLogin: "登录",
+    navLogout: "登出"
   },
   in: {
     navVideo: "वीडियो",
@@ -267,7 +275,9 @@ export const translations = {
     galSmile: "मुस्कान",
     galHope: "आशा",
     galFriends: "दोस्त",
-    galGoodTime: "अच्छा समय"
+    galGoodTime: "अच्छा समय",
+    navLogin: "लॉग इन",
+    navLogout: "लॉग आउट"
   },
   jp: {
     navVideo: "動画",
@@ -321,7 +331,9 @@ export const translations = {
     galSmile: "笑顔",
     galHope: "希望",
     galFriends: "友達",
-    galGoodTime: "楽しい時間"
+    galGoodTime: "楽しい時間",
+    navLogin: "ログイン",
+    navLogout: "ログアウト"
   },
   kr: {
     navVideo: "비디오",
@@ -375,7 +387,9 @@ export const translations = {
     galSmile: "미소",
     galHope: "희망",
     galFriends: "친구들",
-    galGoodTime: "좋은 시간"
+    galGoodTime: "좋은 시간",
+    navLogin: "로그인",
+    navLogout: "로그아웃"
   },
   ar: {
     navVideo: "فيديو",
@@ -429,6 +443,8 @@ export const translations = {
     galSmile: "ابتسامة",
     galHope: "أمل",
     galFriends: "أصدقاء",
-    galGoodTime: "وقت ممتع"
+    galGoodTime: "وقت ممتع",
+    navLogin: "دخول",
+    navLogout: "خروج"
   }
 };

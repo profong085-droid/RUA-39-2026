@@ -150,6 +150,53 @@
   gap: 20px;
 }
 
+.loginBtn {
+  background: var(--accent-gold);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.loginBtn:hover {
+  background: #c68b00;
+  transform: translateY(-2px);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profileImg {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  object-fit: cover;
+}
+
+.logoutBtn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+  background: #ef4444;
+  color: white;
+}
+
 .nav.scrolled .menuBtn {
   color: white;
 }
@@ -382,5 +429,19 @@
   .flagImg {
     width: 24px;
     height: 24px;
+  }
+
+  .authContainer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav.scrolled .authContainer {
+    background: var(--bg-dark);
+    border-top-color: rgba(255, 255, 255, 0.1);
   }
 }

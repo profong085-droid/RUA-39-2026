@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { useLanguage } from '@/context/LanguageContext';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Navbar() {
   const { lang, changeLanguage, t } = useLanguage();
+  const { user, loginWithGoogle, logout } = useAuth();
 
   const languages = [
     { code: 'km', label: 'ខ្មែរ', flagUrl: 'https://flagcdn.com/w40/kh.png' },
@@ -75,6 +77,17 @@ export default function Navbar() {
                   ))}
                 </div>
               </div>
+            </div>
+
+            <div className={styles.authContainer}>
+              {user ? (
+                <div className={styles.userProfile}>
+                  <img src={user.photoURL || 'https://via.placeholder.com/32'} alt="Profile" className={styles.profileImg} />
+                  <button className={styles.logoutBtn} onClick={logout}>{t.navLogout}</button>
+                </div>
+              ) : (
+                <button className={styles.loginBtn} onClick={loginWithGoogle}>{t.navLogin}</button>
+              )}
             </div>
           </div>
 
