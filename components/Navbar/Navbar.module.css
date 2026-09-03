@@ -289,8 +289,8 @@
   }
 
   .link {
-    font-size: 1.1rem;
-    padding: 16px 24px;
+    font-size: 1rem;
+    padding: 12px 20px;
     display: block;
     border-top: 1px solid var(--border-color);
   }
@@ -317,40 +317,70 @@
 
   .langContainer {
     width: 100%;
-    background: white;
-    padding: 24px;
+    background: var(--bg-primary);
+    padding: 16px 20px;
     margin-top: 0;
+  }
+
+  .nav.scrolled .langContainer {
+    background: var(--bg-dark);
   }
 
   .langTitle {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #9ca3af;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
 
+  .nav.scrolled .langTitle {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
   .langDropdown {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 100%;
+    display: block;
+    position: static;
     box-shadow: none;
+    width: 100%;
     padding: 0;
-    margin: 0;
+    margin-top: 5px;
+    background: transparent;
     opacity: 1;
     visibility: visible;
-    border-radius: 0;
+  }
+
+  .nav.scrolled .langName {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .nav.scrolled .langItem {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .nav.scrolled .langItem:hover, .nav.scrolled .langItem.activeLang {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 
   .langGrid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 8px;
   }
 
   .langItem {
     border: 1px solid #f3f4f6;
+    padding: 8px 4px;
+  }
+
+  .langName {
+    font-size: 0.7rem;
+  }
+
+  .flagImg {
+    width: 24px;
+    height: 24px;
   }
 }

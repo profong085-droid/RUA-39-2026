@@ -46,7 +46,7 @@ export default function Gallery() {
         </div>
 
         <div className={styles.bentoGrid}>
-          {photos.map((p) => (
+          {galleryItems.map((p) => (
             <div key={p.id} className={styles.card} onClick={() => setSelectedPhoto(p)}>
               <Image src={p.image} alt={p.title} className={styles.img} sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" />
             </div>
