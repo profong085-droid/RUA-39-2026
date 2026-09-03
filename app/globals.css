@@ -69,9 +69,9 @@ p {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 12px;
-  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .section-subtitle {
@@ -81,6 +81,7 @@ p {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 a {

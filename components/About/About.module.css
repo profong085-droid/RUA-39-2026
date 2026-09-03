@@ -18,6 +18,9 @@
   .infoCard {
     display: none;
   }
+  .textContent {
+    text-align: center;
+  }
 }
 
 .textContent {

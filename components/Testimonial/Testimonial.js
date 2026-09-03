@@ -3,40 +3,9 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import Link from 'next/link';
 import styles from './Testimonial.module.css';
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'ផូ ឆៃហ្វុង',
-    image: '/photo profile/ផូ ឆៃហ្វុង.jpg',
-  },
-  {
-    id: 2,
-    name: 'ឆន កុសល',
-    image: '/photo profile/ឆន កុសល.jpg',
-  },
-  {
-    id: 3,
-    name: 'ជួន ចាន់ឌីណា',
-    image: '/photo profile/ជួន ចាន់ឌីណា.jpg',
-  },
-  {
-    id: 4,
-    name: 'ញ៉ ចាន់ថា',
-    image: '/photo profile/ញ៉ ចាន់ថា.jpg',
-  },
-  {
-    id: 5,
-    name: 'បូ ភក្តី',
-    image: '/photo profile/បូ ភក្តី.jpg',
-  },
-  {
-    id: 6,
-    name: 'ផូ ឆៃហ្វីន',
-    image: '/photo profile/ផូ ឆៃហ្វីន.jpg',
-  }
-];
+import { membersData as testimonials } from '@/utils/membersData';
 
 export default function Testimonial() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -129,11 +98,13 @@ export default function Testimonial() {
                 }}
                 className={styles.testimonialCard}
               >
-                <img 
-                  src={currentTestimonial.image} 
-                  alt={currentTestimonial.name} 
-                  className={styles.avatarLarge} 
-                />
+                <Link href="/alumni">
+                  <img 
+                    src={currentTestimonial.image} 
+                    alt={currentTestimonial.name} 
+                    className={styles.avatarLarge} 
+                  />
+                </Link>
                 <div className={styles.header}>
                   <h3 className={styles.name}>{getTranslatedName(currentTestimonial.name)}</h3>
                 </div>
@@ -147,15 +118,21 @@ export default function Testimonial() {
             </button>
             
             <div className={styles.thumbnails}>
-              {testimonials.map((test, idx) => (
-                <button 
-                  key={test.id} 
-                  className={`${styles.thumbBtn} ${idx === currentIndex ? styles.active : ''}`}
-                  onClick={() => goToSlide(idx)}
-                >
-                  <img src={test.image} alt={test.name} className={styles.thumbImg} />
-                </button>
-              ))}
+              {(() => {
+                const startIndex = Math.floor(currentIndex / 4) * 4;
+                return testimonials.slice(startIndex, startIndex + 4).map((test, idx) => {
+                  const actualIndex = startIndex + idx;
+                  return (
+                    <button 
+                      key={test.id} 
+                      className={`${styles.thumbBtn} ${actualIndex === currentIndex ? styles.active : ''}`}
+                      onClick={() => goToSlide(actualIndex)}
+                    >
+                      <img src={test.image} alt={test.name} className={styles.thumbImg} />
+                    </button>
+                  );
+                });
+              })()}
             </div>
 
             <button className={styles.navBtn} onClick={() => paginate(1)}>

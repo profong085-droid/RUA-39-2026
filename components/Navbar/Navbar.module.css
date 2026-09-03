@@ -23,9 +23,10 @@
   position: relative;
 }
 
-.logoImg {
+.logoContainer {
   display: flex;
   align-items: center;
+  gap: 10px;
   text-decoration: none;
 }
 
@@ -49,29 +50,23 @@
   transform: scale(1.1);
 }
 
-
-
 .navLogo {
   height: 48px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
-  margin-right: -4px;
 }
 
-.logoTextCenter {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+.logoText {
   font-family: 'Suwannaphum', serif;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: #000000;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   letter-spacing: 0.5px;
-  text-decoration: none;
+  transition: var(--transition);
 }
 
 .tag {
@@ -84,19 +79,20 @@
   letter-spacing: 1px;
 }
 
-.nav.scrolled .logoTextCenter {
+.nav.scrolled .logoText {
   color: var(--bg-secondary);
 }
 
 .rightSection {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 }
 
 .links {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 24px;
 }
 
 .link {
@@ -306,6 +302,12 @@
 }
 
 @media (max-width: 768px) {
+  .logoText {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .menuBtn {
     display: flex;
     align-items: center;

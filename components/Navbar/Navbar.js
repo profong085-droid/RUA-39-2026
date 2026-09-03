@@ -42,12 +42,11 @@ export default function Navbar() {
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        <a href="#" className={styles.logoImg} onClick={(e) => handleNav(e, '#')}>
+        <a href="#" className={styles.logoContainer} onClick={(e) => handleNav(e, '#')}>
           <img src="/logo/RUA1.png" alt="RUA Logo" className={styles.navLogo} />
-        </a>
-
-        <a href="#" className={styles.logoTextCenter} onClick={(e) => handleNav(e, '#')}>
-          RUA <span className={styles.tag}>{t.year2026}</span>
+          <div className={styles.logoText}>
+            RUA <span className={styles.tag}>{t.year2026}</span>
+          </div>
         </a>
 
         <div className={styles.rightSection}>
