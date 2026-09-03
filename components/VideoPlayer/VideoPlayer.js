@@ -20,9 +20,9 @@ export default function VideoPlayer() {
           <div className={styles.videoWrapper}>
             <iframe
               className={styles.iframe}
-              src={`https://www.youtube.com/embed/${youtubeId}?rel=0&vq=hd2160`}
-              allow="autoplay; fullscreen"
-              sandbox="allow-scripts allow-same-origin allow-presentation"
+              src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
             />
           </div>
         </div>

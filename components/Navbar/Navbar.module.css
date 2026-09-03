@@ -181,6 +181,83 @@
   border-color: #fff;
 }
 
+.langContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.langTitle {
+  display: none;
+}
+
+.langDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  width: 320px;
+}
+
+.langContainer:hover .langDropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+.langGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.langItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid transparent;
+  padding: 12px 4px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.langItem:hover, .langItem.activeLang {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+}
+
+.flagImg {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+.flagImgSmall {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.langName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+}
+
 @media (max-width: 768px) {
   .menuBtn {
     display: flex;
@@ -208,7 +285,7 @@
   }
 
   .links.open {
-    max-height: 300px;
+    max-height: 800px;
   }
 
   .link {
@@ -216,6 +293,14 @@
     padding: 16px 24px;
     display: block;
     border-top: 1px solid var(--border-color);
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
+  .desktopOnly {
+    display: none;
   }
 
   .nav.scrolled .link {
@@ -230,21 +315,42 @@
     gap: 12px;
   }
 
-  .langBtn {
-    margin: 20px auto 24px;
-    width: calc(100% - 48px);
-    justify-content: center;
-    padding: 12px;
-    font-size: 1rem;
-    background: rgba(217, 119, 6, 0.1);
-    border: 1px solid var(--accent-gold);
-    color: var(--accent-gold);
-    box-shadow: none;
+  .langContainer {
+    width: 100%;
+    background: white;
+    padding: 24px;
+    margin-top: 0;
   }
 
-  .nav.scrolled .langBtn {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.2);
-    color: white;
+  .langTitle {
+    display: block;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .langDropdown {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    visibility: visible;
+    border-radius: 0;
+  }
+
+  .langGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .langItem {
+    border: 1px solid #f3f4f6;
   }
 }

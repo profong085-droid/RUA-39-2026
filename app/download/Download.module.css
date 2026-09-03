@@ -1,0 +1,114 @@
+.container {
+  min-height: 100vh;
+  padding: 140px 24px 60px;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-top: 40px;
+}
+
+.logosGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.logoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 30px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.logoLabel {
+  font-family: 'Suwannaphum', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--bg-dark);
+  margin-bottom: 20px;
+  text-align: center;
+  min-height: 55px; /* Ensures buttons align even if text wraps */
+  display: flex;
+  align-items: center;
+}
+
+.logoPreview {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.title {
+  font-family: 'Suwannaphum', serif;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.desc {
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background-color: var(--accent-green);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.2);
+}
+
+.downloadBtn:hover {
+  background-color: var(--bg-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(4, 120, 87, 0.3);
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--text-muted);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.backLink:hover {
+  color: var(--accent-green);
+}
+
+@media (max-width: 600px) {
+  .logosGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

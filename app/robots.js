@@ -4,6 +4,6 @@ export default function robots() {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://rua-39.website/sitemap.xml',
+    sitemap: 'https://www.rua-39.website/sitemap.xml',
   }
 }

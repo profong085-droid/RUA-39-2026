@@ -1,144 +1,100 @@
 .section {
   padding: 60px 0;
-  position: relative;
-  z-index: 10;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
   align-items: center;
 }
 
 @media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; gap: 60px; }
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .infoCard {
+    display: none;
+  }
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .body {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
+  font-size: 1.05rem;
   line-height: 1.8;
-  margin-bottom: 24px;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .infoCard {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: var(--bg-secondary);
   border-radius: var(--radius-lg);
-  padding: 30px;
+  padding: 32px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
+  border-left: 4px solid #059669;
 }
 
-.infoCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--accent-green), var(--accent-gold));
+.cardHeader {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
 }
 
 .cardTitle {
   font-family: 'Suwannaphum', serif;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  margin: 0;
 }
 
 .detailGrid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
 }
 
 .detailCard {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.4);
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  transition: var(--transition);
-}
-
-.detailCard:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  gap: 16px;
 }
 
 .detailIcon {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(217,119,6,0.1), rgba(34,197,94,0.1));
+  background-color: rgba(217, 119, 6, 0.1);
   color: var(--accent-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
 }
 
 .detailContent {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .detailLabel {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
 }
 
 .detailValue {
-  font-size: 0.95rem;
+  font-family: 'Suwannaphum', serif;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.3;
-}
-
-@media (max-width: 600px) {
-  .section { padding: 40px 0; }
-  .textContent { text-align: center; }
-  .body { font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; }
-  .metrics { 
-    flex-direction: row; 
-    gap: 16px; 
-    margin-top: 24px; 
-    align-items: center; 
-    justify-content: center; 
-  }
-  .metric { align-items: center; }
-  .metricDivider { width: 1px; height: 30px; margin: 0; }
-  .metricVal { font-size: 1.3rem; }
-  .infoCard { 
-    display: none;
-  }
-  .cardTitle { font-size: 1.15rem; margin-bottom: 16px; padding-bottom: 10px; }
-  
-  .detailCard {
-    flex-direction: column;
-    text-align: center;
-    padding: 12px;
-    gap: 8px;
-  }
-  
-  .detailCard:hover {
-    transform: translateY(-3px);
-  }
 }

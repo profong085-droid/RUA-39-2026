@@ -21,10 +21,15 @@ export function LanguageProvider({ children }) {
     localStorage.setItem('appLang', newLang);
   };
 
-  const t = translations[lang];
+  const changeLanguage = (newLang) => {
+    setLang(newLang);
+    localStorage.setItem('appLang', newLang);
+  };
+
+  const t = translations[lang] || translations['en'];
 
   return (
-    <LanguageContext.Provider value={{ lang, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ lang, toggleLanguage, changeLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );
