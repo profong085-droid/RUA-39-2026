@@ -47,9 +47,13 @@ body {
   font-family: 'Kantumruy Pro', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
   position: relative;
+}
+
+p {
+  max-width: 800px;
 }
 
 /* Base Utility */
