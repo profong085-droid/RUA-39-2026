@@ -17,25 +17,25 @@ import img9 from '@/public/photo/IMG_9357 (2).JPG';
 import img10 from '@/public/photo/IMG_9254 (2).JPG';
 import img11 from '@/public/photo/IMG_9303 (2).JPG';
 
-const photos = [
-  { id: 1, title: 'ថ្ងៃបញ្ចប់ការសិក្សា', image: img1 },
-  { id: 2, title: 'មិត្តភាព', image: img2 },
-  { id: 3, title: 'អនុស្សាវរីយ៍', image: img3 },
-  { id: 4, title: 'សមិទ្ធផល', image: img4 },
-  { id: 5, title: 'ភាពជោគជ័យ', image: img5 },
-  { id: 6, title: 'ជីវិតក្នុងសាលា', image: img6 },
-  { id: 12, title: 'ភាពរីករាយ', image: img12 },
-  { id: 7, title: 'ការអបអរសាទរ', image: img7 },
-  { id: 8, title: 'ស្នាមញញឹម', image: img8 },
-  { id: 9, title: 'ក្ដីសង្ឃឹម', image: img9 },
-  { id: 10, title: 'មិត្តភក្តិ', image: img10 },
-  { id: 11, title: 'វេលាល្អ', image: img11 },
-];
-
 export default function Gallery() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const { t } = useLanguage();
+
+  const galleryItems = [
+    { id: 1, title: t.galGraduation, image: img1 },
+    { id: 2, title: t.galFriendship, image: img2 },
+    { id: 3, title: t.galMemories, image: img3 },
+    { id: 4, title: t.galAchievement, image: img4 },
+    { id: 5, title: t.galSuccess, image: img5 },
+    { id: 6, title: t.galSchoolLife, image: img6 },
+    { id: 12, title: t.galJoy, image: img12 },
+    { id: 7, title: t.galCelebration, image: img7 },
+    { id: 8, title: t.galSmile, image: img8 },
+    { id: 9, title: t.galHope, image: img9 },
+    { id: 10, title: t.galFriends, image: img10 },
+    { id: 11, title: t.galGoodTime, image: img11 },
+  ];
 
   return (
     <section id="gallery" className={styles.section}>

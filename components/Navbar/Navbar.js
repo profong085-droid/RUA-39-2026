@@ -45,7 +45,7 @@ export default function Navbar() {
         </a>
 
         <a href="#" className={styles.logoTextCenter} onClick={(e) => handleNav(e, '#')}>
-          RUA <span className={styles.tag}>២០២៦</span>
+          RUA <span className={styles.tag}>{t.year2026}</span>
         </a>
 
         <div className={styles.rightSection}>
@@ -53,7 +53,7 @@ export default function Navbar() {
             <a href="#video" className={styles.link} onClick={(e) => handleNav(e, '#video')}>{t.navVideo}</a>
             <a href="#gallery" className={styles.link} onClick={(e) => handleNav(e, '#gallery')}>{t.navGallery}</a>
             <a href="#about" className={styles.link} onClick={(e) => handleNav(e, '#about')}>{t.navAbout}</a>
-            <a href="/download" className={styles.link}>ទាញយក Logo</a>
+            <a href="/download" className={styles.link}>{t.navDownload}</a>
             <div className={styles.langContainer}>
               <button className={`${styles.langBtn} ${styles.desktopOnly}`}>
                 <img src={languages.find(l => l.code === lang)?.flagUrl || 'https://flagcdn.com/w40/gb.png'} alt="flag" className={styles.flagImgSmall} />

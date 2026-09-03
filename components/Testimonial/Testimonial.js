@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import styles from './Testimonial.module.css';
@@ -40,6 +41,20 @@ const testimonials = [
 export default function Testimonial() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const { lang } = useLanguage();
+
+  const getTranslatedName = (name) => {
+    if (lang === 'km') return name;
+    const map = {
+      'ផូ ឆៃហ្វុង': 'Pho Chhayfong',
+      'ឆន កុសល': 'Chhon Kosal',
+      'ជួន ចាន់ឌីណា': 'Chuon Chandina',
+      'ញ៉ ចាន់ថា': 'Nha Chantha',
+      'បូ ភក្តី': 'Bo Phakdey',
+      'ផូ ឆៃហ្វីន': 'Pho Chhayfin'
+    };
+    return map[name] || name;
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -120,7 +135,7 @@ export default function Testimonial() {
                   className={styles.avatarLarge} 
                 />
                 <div className={styles.header}>
-                  <h3 className={styles.name}>{currentTestimonial.name}</h3>
+                  <h3 className={styles.name}>{getTranslatedName(currentTestimonial.name)}</h3>
                 </div>
               </motion.div>
             </AnimatePresence>

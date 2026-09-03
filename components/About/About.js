@@ -33,7 +33,7 @@ export default function About() {
                 <div className={styles.detailIcon}><FiCalendar /></div>
                 <div className={styles.detailContent}>
                   <span className={styles.detailLabel}>{t.infoGen}</span>
-                  <span className={styles.detailValue}>២០២២ — ២០២៦</span>
+                  <span className={styles.detailValue}>{t.yearRange}</span>
                 </div>
               </div>
               
