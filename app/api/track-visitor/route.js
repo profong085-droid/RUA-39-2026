@@ -42,11 +42,13 @@ export async function POST(req) {
     // Fetch IP Location details (if not localhost)
     let locationInfo = 'Unknown Location';
     let isp = 'Unknown ISP';
+    let lat = null;
+    let lon = null;
 
     if (ip && !ip.includes('127.0.0.1') && ip !== 'Unknown') {
       try {
         const geoRes = await fetch(
-          `http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city,isp`,
+          `http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city,lat,lon,isp`,
           { next: { revalidate: 3600 } }
         );
         if (geoRes.ok) {
@@ -55,6 +57,10 @@ export async function POST(req) {
             const locParts = [geoData.city, geoData.regionName, geoData.country].filter(Boolean);
             locationInfo = `${locParts.join(', ')} (${geoData.countryCode || ''})`;
             isp = geoData.isp || 'Unknown';
+            if (geoData.lat && geoData.lon) {
+              lat = geoData.lat;
+              lon = geoData.lon;
+            }
           }
         }
       } catch (e) {
@@ -68,12 +74,16 @@ export async function POST(req) {
       timeStyle: 'medium',
     });
 
+    const mapLinkHtml = lat && lon
+      ? `🗺️ <b>ផែនទី (Maps):</b> <a href="https://www.google.com/maps?q=${lat},${lon}">ចុចទីនេះដើម្បីបើក Google Maps 📍</a>\n`
+      : '';
+
     const message = `🔔 <b>អ្នកចូលទស្សនាវេបសាយថ្មី (New Visitor)</b>
 ━━━━━━━━━━━━━━━━━━
 🌐 <b>IP Address:</b> <code>${ip}</code>
 📍 <b>ទីតាំង:</b> ${locationInfo}
 🏢 <b>ISP / ប្រព័ន្ធ:</b> ${isp}
-🔗 <b>ទំព័រ:</b> <code>${clientPath}</code>
+${mapLinkHtml}🔗 <b>ទំព័រ:</b> <code>${clientPath}</code>
 ↩️ <b>ប្រភព:</b> ${referrer}
 🕒 <b>ម៉ោង (Cambodia):</b> ${currentTime}
 📱 <b>ឧបករណ៍ / Browser:</b>
@@ -87,7 +97,7 @@ export async function POST(req) {
         chat_id: chatId,
         text: message,
         parse_mode: 'HTML',
-        disable_web_page_preview: true,
+        disable_web_page_preview: false,
       }),
     });
 
@@ -96,6 +106,23 @@ export async function POST(req) {
     if (!teleData.ok) {
       console.error('Telegram API error:', teleData);
       return NextResponse.json({ success: false, error: teleData.description }, { status: 500 });
+    }
+
+    // Also send native interactive Telegram Location Map pin if coordinates are available
+    if (lat && lon) {
+      try {
+        await fetch(`https://api.telegram.org/bot${token}/sendLocation`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            latitude: lat,
+            longitude: lon,
+          }),
+        });
+      } catch (mapErr) {
+        console.error('Telegram sendLocation error:', mapErr);
+      }
     }
 
     return NextResponse.json({ success: true });
