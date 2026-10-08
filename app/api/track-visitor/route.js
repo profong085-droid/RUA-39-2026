@@ -1,5 +1,57 @@
 import { NextResponse } from 'next/server';
 
+function getCountryFlag(countryCode) {
+  if (!countryCode || countryCode.length !== 2) return '🌐';
+  const codePoints = countryCode
+    .toUpperCase()
+    .split('')
+    .map((char) => 127397 + char.charCodeAt(0));
+  return String.fromCodePoint(...codePoints);
+}
+
+function parseDeviceInfo(userAgent) {
+  let deviceType = '💻 Desktop (កុំព្យូទ័រ)';
+  let os = 'Unknown OS';
+  let browser = 'Unknown Browser';
+
+  // Device Type
+  if (/tablet|ipad/i.test(userAgent)) {
+    deviceType = '📱 Tablet (ថេប្លេត)';
+  } else if (/mobile|iphone|android/i.test(userAgent)) {
+    deviceType = '📱 Mobile (ទូរស័ព្ទដៃ)';
+  }
+
+  // Operating System
+  if (/windows nt 10/i.test(userAgent)) os = 'Windows 10 / 11';
+  else if (/windows nt 6.3/i.test(userAgent)) os = 'Windows 8.1';
+  else if (/windows nt 6.1/i.test(userAgent)) os = 'Windows 7';
+  else if (/iphone/i.test(userAgent)) {
+    const match = userAgent.match(/OS (\d+[._]\d+)/i);
+    os = match ? `Apple iOS ${match[1].replace('_', '.')}` : 'Apple iOS (iPhone)';
+  } else if (/ipad/i.test(userAgent)) {
+    os = 'Apple iPadOS';
+  } else if (/mac os x/i.test(userAgent)) {
+    os = 'macOS (Apple Mac)';
+  } else if (/android/i.test(userAgent)) {
+    const match = userAgent.match(/Android\s([0-9.]+)/i);
+    os = match ? `Android ${match[1]}` : 'Android OS';
+  } else if (/linux/i.test(userAgent)) {
+    os = 'Linux';
+  }
+
+  // Browser detection (including Social In-App Browsers)
+  if (/FBAN|FBAV/i.test(userAgent)) browser = 'Facebook App Browser 📘';
+  else if (/Instagram/i.test(userAgent)) browser = 'Instagram App 📸';
+  else if (/Telegram/i.test(userAgent)) browser = 'Telegram App ✈️';
+  else if (/TikTok/i.test(userAgent)) browser = 'TikTok App 🎵';
+  else if (/edg/i.test(userAgent)) browser = 'Microsoft Edge';
+  else if (/chrome|crios/i.test(userAgent)) browser = 'Google Chrome';
+  else if (/safari/i.test(userAgent) && !/chrome/i.test(userAgent)) browser = 'Apple Safari';
+  else if (/firefox|fxios/i.test(userAgent)) browser = 'Mozilla Firefox';
+
+  return { deviceType, os, browser };
+}
+
 export async function POST(req) {
   try {
     const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -15,12 +67,18 @@ export async function POST(req) {
 
     const body = await req.json().catch(() => ({}));
     const clientPath = body.page || '/';
-    const referrer = body.referrer || 'Direct Visit';
+    const referrer = body.referrer || 'ចូលផ្ទាល់ (Direct Visit)';
+    const screen = body.screen || 'មិនច្បាស់';
+    const language = body.language || 'មិនច្បាស់';
+    const clientTimezone = body.timezone || 'Asia/Phnom_Penh';
+    const isDarkMode = body.isDarkMode;
+    const networkType = body.networkType ? body.networkType.toUpperCase() : '';
+    const battery = body.battery;
 
     // Get client IP address
     const forwarded = req.headers.get('x-forwarded-for');
     let ip = forwarded ? forwarded.split(',')[0].trim() : req.headers.get('x-real-ip') || '';
-    
+
     // In local development, fetch public IP for accurate testing
     const isLocal = !ip || ip === '::1' || ip === '127.0.0.1' || ip === 'localhost';
     if (isLocal) {
@@ -38,25 +96,37 @@ export async function POST(req) {
     }
 
     const userAgent = req.headers.get('user-agent') || 'Unknown';
+    const { deviceType, os, browser } = parseDeviceInfo(userAgent);
 
-    // Fetch IP Location details (if not localhost)
-    let locationInfo = 'Unknown Location';
+    // Fetch IP Location details
+    let country = 'Unknown Country';
+    let countryCode = '';
+    let region = 'Unknown Region';
+    let city = 'Unknown City';
+    let zip = '';
     let isp = 'Unknown ISP';
+    let org = '';
+    let asNumber = '';
     let lat = null;
     let lon = null;
 
     if (ip && !ip.includes('127.0.0.1') && ip !== 'Unknown') {
       try {
         const geoRes = await fetch(
-          `http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city,lat,lon,isp`,
+          `http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city,zip,lat,lon,isp,org,as`,
           { next: { revalidate: 3600 } }
         );
         if (geoRes.ok) {
           const geoData = await geoRes.json();
           if (geoData.status === 'success') {
-            const locParts = [geoData.city, geoData.regionName, geoData.country].filter(Boolean);
-            locationInfo = `${locParts.join(', ')} (${geoData.countryCode || ''})`;
-            isp = geoData.isp || 'Unknown';
+            country = geoData.country || country;
+            countryCode = geoData.countryCode || '';
+            region = geoData.regionName || region;
+            city = geoData.city || city;
+            zip = geoData.zip || '';
+            isp = geoData.isp || isp;
+            org = geoData.org || '';
+            asNumber = geoData.as || '';
             if (geoData.lat && geoData.lon) {
               lat = geoData.lat;
               lon = geoData.lon;
@@ -68,27 +138,54 @@ export async function POST(req) {
       }
     }
 
+    const flag = getCountryFlag(countryCode);
+
     const currentTime = new Date().toLocaleString('en-US', {
       timeZone: 'Asia/Phnom_Penh',
-      dateStyle: 'medium',
+      dateStyle: 'full',
       timeStyle: 'medium',
     });
 
-    const mapLinkHtml = lat && lon
-      ? `🗺️ <b>ផែនទី (Maps):</b> <a href="https://www.google.com/maps?q=${lat},${lon}">ចុចទីនេះដើម្បីបើក Google Maps 📍</a>\n`
+    // Format Battery string
+    let batteryText = 'មិនស្គាល់';
+    if (battery && typeof battery.level === 'number') {
+      batteryText = `🔋 ${battery.level}% ${battery.charging ? '(⚡ កំពុងសាកថ្ម / Charging)' : '(ប្រើថាមពលថ្ម)'}`;
+    }
+
+    // Format Theme
+    const themeText = isDarkMode === true ? '🌙 Dark Mode (ងងឹត)' : isDarkMode === false ? '☀️ Light Mode (ភ្លឺ)' : 'Auto / System';
+
+    // Format Map link
+    const mapLine = lat && lon
+      ? `  • 🗺️ <b>ផែនទី Google:</b> <a href="https://www.google.com/maps?q=${lat},${lon}"><b>ចុចទីនេះដើម្បីបើក Google Maps 📍</b></a>\n`
       : '';
 
-    const message = `🔔 <b>អ្នកចូលទស្សនាវេបសាយថ្មី (New Visitor)</b>
-━━━━━━━━━━━━━━━━━━
-🌐 <b>IP Address:</b> <code>${ip}</code>
-📍 <b>ទីតាំង:</b> ${locationInfo}
-🏢 <b>ISP / ប្រព័ន្ធ:</b> ${isp}
-${mapLinkHtml}🔗 <b>ទំព័រ:</b> <code>${clientPath}</code>
-↩️ <b>ប្រភព:</b> ${referrer}
-🕒 <b>ម៉ោង (Cambodia):</b> ${currentTime}
-📱 <b>ឧបករណ៍ / Browser:</b>
-<code>${userAgent.substring(0, 160)}</code>
-━━━━━━━━━━━━━━━━━━`;
+    const message = `🚨 <b>ការជូនដំណឹង៖ មានអ្នកចូលទស្សនាថ្មី! (New Visitor)</b>
+━━━━━━━━━━━━━━━━━━━━━
+🌐 <b>បណ្តាញអ៊ីនធឺណិត (Network & IP):</b>
+  • <b>IP Address:</b> <code>${ip}</code>
+  • <b>ក្រុមហ៊ុន (ISP):</b> ${isp}
+  ${org ? `• <b>ស្ថាប័ន (Org):</b> ${org}\n  ` : ''}${asNumber ? `• <b>បណ្តាញ (AS):</b> ${asNumber}\n  ` : ''}${networkType ? `• <b>ល្បឿនបណ្តាញ:</b> 📶 ${networkType}\n  ` : ''}
+📍 <b>ទីតាំងភូមិសាស្ត្រ (Location):</b>
+  • <b>ប្រទេស:</b> ${country} ${flag}
+  • <b>រាជធានី/ខេត្ត:</b> ${region}
+  • <b>ទីក្រុង:</b> ${city} ${zip ? `(Zip: ${zip})` : ''}
+  ${lat && lon ? `• <b>កូអរដោនេ:</b> <code>${lat}, ${lon}</code>\n` : ''}${mapLine}
+📱 <b>ឧបករណ៍ & ប្រព័ន្ធ (Device & System):</b>
+  • <b>ប្រភេទឧបករណ៍:</b> ${deviceType}
+  • <b>ប្រព័ន្ធប្រតិបត្តិការ:</b> ${os}
+  • <b>កម្មវិធីរុករក:</b> ${browser}
+  • <b>ទំហំអេក្រង់:</b> 🖥 ${screen}
+  • <b>ភាសាឧបករណ៍:</b> 🌐 ${language}
+  • <b>ថាមពលថ្ម:</b> ${batteryText}
+  • <b>រូបរាង (Theme):</b> ${themeText}
+
+📄 <b>ព័ត៌មានទស្សនា (Visit Details):</b>
+  • <b>ទំព័របានចូល:</b> <code>${clientPath}</code>
+  • <b>ប្រភពចូល (Referrer):</b> ${referrer}
+  • <b>តំបន់ម៉ោង:</b> ⏰ ${clientTimezone}
+  • <b>កាលបរិច្ឆេទ & ម៉ោង:</b> ${currentTime}
+━━━━━━━━━━━━━━━━━━━━━`;
 
     const telegramRes = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
@@ -108,7 +205,7 @@ ${mapLinkHtml}🔗 <b>ទំព័រ:</b> <code>${clientPath}</code>
       return NextResponse.json({ success: false, error: teleData.description }, { status: 500 });
     }
 
-    // Also send native interactive Telegram Location Map pin if coordinates are available
+    // Send native interactive Telegram Location Map pin if coordinates are available
     if (lat && lon) {
       try {
         await fetch(`https://api.telegram.org/bot${token}/sendLocation`, {
